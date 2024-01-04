@@ -62,13 +62,60 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Cadastro de alunos</h4>
-                        <div class="card-body">
+
+                        <h4>Cadastro de alunos
                             <!-- Botão para acionar modal -->
                             <button type="button" class="btn btn-primary float-end" data-toggle="modal" data-target="#studentAddModal">
                             Adicionar estudante
                             </button>
+                        </h4>
+                            
+
+                        <div class="card-body">
+                            <table id="myTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>E-mail</th>
+                                        <th>Telefone</th>
+                                        <th>Curso</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        require_once './dbcon.php';
+
+                                        $query = "SELECT * FROM estudantes";
+                                        $query_run = mysqli_query($con, $query);
+
+                                        if (mysqli_num_rows($query_run)>0)
+                                        {
+                                            foreach ($query_run as $estudante)
+                                            {
+                                                ?>
+
+                                                    <tr>
+                                                        <td><?= $estudante['nome'] ?></td>
+                                                        <td><?= $estudante['email'] ?></td>
+                                                        <td><?= $estudante['telefone'] ?></td>
+                                                        <td><?= $estudante['curso'] ?></td>
+                                                        <td>
+                                                            <a href="" class="btn btn-info">Editar</a>
+                                                            <a href="" class="btn btn-success">Editar</a>
+                                                            <a href="" class="btn btn-danger">Apagar</a>       
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                            }
+                                        }
+                                    ?>
+                                    
+                                </tbody>
+                            </table>
+                            
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -25,6 +25,8 @@ $(document).on('submit', '#saveStudent', function(e)
                 $('#errorMessage').addClass('d-none');
                 $('#studentAddModal').modal('hide');
                 $('#saveStudent')[0].reset();
+
+                $('#myTable').load(location.href + " #myTable");
             }
         }
     });    

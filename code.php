@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root', '', 'crud-estudantes');
+require_once './dbcon.php';
 
 if (isset($_POST['save_student']))
 {
